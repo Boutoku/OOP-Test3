@@ -1,3 +1,5 @@
+package oefening2;
+
 import oefening2.IRole;
 import oefening2.Person;
 
