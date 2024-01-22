@@ -37,11 +37,12 @@ public class WordSearch {
         for (String i : list.keySet()) {
             System.out.println("'" + i + "' occurs " + list.get(i) + " times.");
         }
-
     }
 
     public void showConsonantsNotInList() {
-
+        consonants.stream()
+                .filter(consonant -> !list.containsKey(consonant))
+                .forEach(consonant -> System.out.println(consonant + " doesn't occur"));
     }
 
     public void characterMinimalOccurence(int count) {
