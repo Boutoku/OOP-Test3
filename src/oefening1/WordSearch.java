@@ -34,6 +34,9 @@ public class WordSearch {
     }
 
     public void showConsonantsInList() {
+        for (String i : list.keySet()) {
+            System.out.println("'" + i + "' occurs " + list.get(i) + " times.");
+        }
 
     }
 
