@@ -27,7 +27,7 @@ public class WordSearch {
 
     private void loadConsonants() {
         Random r = new Random();
-        for (int i=0; i<25; i++) {
+        for (int i = 0; i < 25; i++) {
             int index = r.nextInt(consonants.size());
             list.put(consonants.get(index), list.getOrDefault(consonants.get(index), 0) + 1);
         }
@@ -44,6 +44,7 @@ public class WordSearch {
                 .filter(consonant -> !list.containsKey(consonant))
                 .forEach(consonant -> System.out.println(consonant + " doesn't occur"));
     }
+
     private void printResult() {
         System.out.println("These characters occur MINIMAL " + resultCount + " times");
 
@@ -51,6 +52,7 @@ public class WordSearch {
                 .sorted()
                 .forEach(character -> System.out.println("  " + character));
     }
+
     public void characterMinimalOccurence(int count) {
         resultCount = count;
         result.clear();
@@ -60,12 +62,23 @@ public class WordSearch {
                 .forEach(result::add);
 
         printResult();
-
     }
 
-
     public void checkWord(String word) {
+        HashMap<String, Integer> tempList = new HashMap<>(list);
 
+        for (char c : word.toCharArray()) {
+            String character = String.valueOf(c);
+
+            if (!tempList.containsKey(character) || tempList.get(character) == 0) {
+                System.out.println(word + " is NOT possible");
+                return;
+            }
+
+            tempList.put(character, tempList.get(character) - 1);
+        }
+
+        System.out.println(word + " is possible");
     }
 
     public void showList() {
