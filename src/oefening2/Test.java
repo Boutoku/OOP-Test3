@@ -10,5 +10,10 @@ public class Test {
         System.out.println(m1);
         System.out.println(m2);
         System.out.println(m3);
+
+        Lector l1 = new Lector("Marc", "Thomas More");
+        Lector l2 = new Lector("Rodrigue", "Thomas More");
+        System.out.println(l1);
+        System.out.println(l2);
     }
 }
