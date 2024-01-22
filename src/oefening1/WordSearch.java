@@ -44,10 +44,25 @@ public class WordSearch {
                 .filter(consonant -> !list.containsKey(consonant))
                 .forEach(consonant -> System.out.println(consonant + " doesn't occur"));
     }
+    private void printResult() {
+        System.out.println("These characters occur MINIMAL " + resultCount + " times");
 
+        result.stream()
+                .sorted()
+                .forEach(character -> System.out.println("  " + character));
+    }
     public void characterMinimalOccurence(int count) {
+        resultCount = count;
+        result.clear();
+
+        list.keySet().stream()
+                .filter(character -> list.get(character) >= count)
+                .forEach(result::add);
+
+        printResult();
 
     }
+
 
     public void checkWord(String word) {
 
